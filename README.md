@@ -16,6 +16,7 @@
 8. Ajouter un nouveau mot de passe (je suggère d'en générer un aléatoire)
 9. Dans le fichier .env clé `SERVER` ajouter la partie avant `/myFirstDatabse?`. Remplacer `<password>` par le mot de passe auto-généré précédemment
 10. Dans le fichier .env clé `DATABASE` ajouter la partie `myFirstDatabase?retryWrites=true&w=majority`. Remplacer `myFirstDatabase` par le nom du cluster
+11. Ne pas oublier d'ajouter ces variables d'environnement dans Heroku en allant dans `Settings > Config Vars`.
 
 [Deploying Node.js Apps on Heroku](https://devcenter.heroku.com/articles/deploying-nodejs)
 
