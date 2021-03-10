@@ -27,6 +27,8 @@
 
 ## Utilisation
 
+Je conseille d'utiliser un programme comme [Insomnia](https://insomnia.rest/) afin de tester les endpoints et de ne pas "polluer" l'API.
+
 Le endpoint de l'API est:
 `https://lit-shelf-44437.herokuapp.com/api/`
 
