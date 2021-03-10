@@ -2,7 +2,7 @@
 
 ## Cloner ce git
 
-`git clone https://github.com/mattheri/projetfinalapi.git`
+`git clone https://github.com/mattheri/projetfinalapi.git` puis `cd/projetfinalapi && npm install`
 
 ## Pour déployer sur Heroku
 
