@@ -21,9 +21,9 @@
 
 ## Modifications
 
-Vous pouvez modifier les endpoints dans le fichier `server.js`.
-Vous pouvez modifier les schemas dans le folder `db/schema`.
-Vous pouvez modifier les routes dans le folder `router`.
+- Vous pouvez modifier les endpoints dans le fichier `server.js`.
+- Vous pouvez modifier les schemas dans le folder `db/schema`.
+- Vous pouvez modifier les routes dans le folder `router`.
 
 ## Utilisation
 
@@ -32,115 +32,127 @@ Le endpoint de l'API est:
 
 ### Utilisateurs
 
-nom: String,
-prenom: String,
-courriel: String,
-telephone: String,
-ville: String,
-competences: Array,
-formations: Array,
-cv: String,
-message: String
+{
+"nom": "String",
+"prenom": "String",
+"courriel": "String",
+"telephone": "String",
+"ville": "String",
+"competences": "Array",
+"formations": "Array",
+"cv": "String",
+"message": "String"
+}
 
 _Je ne fais aucune authentification. Vous êtes responsable de créer votre propre flow d'authentification. Je n'ai pas géré les fichiers attachés non plus._
 
-endpoint: `utilisateur`
-créer: `POST` avec un body
-get tous: `GET`
-get un seul par id: `GET /id`
-mettre à jour: `PUT /id` avec un body
-supprimer: `DELETE /id`
+- endpoint: `utilisateur`
+- créer: `POST` avec un body
+- get tous: `GET`
+- get un seul par id: `GET /id`
+- mettre à jour: `PUT /id` avec un body
+- supprimer: `DELETE /id`
 
 ### Entreprises
 
-nom: String,
-nomPersonneContact: String,
-prenomPersonneContact: String,
-courriel: String,
-telephone: String,
-adresse: String,
-ville: String,
-siteWeb: String,
-logo: String,
-description: String,
-secteurActivite: Array,
-typesPostes: Array
+{
+"nom": "String",
+"nomPersonneContact": "String",
+"prenomPersonneContact": "String",
+"courriel": "String",
+"telephone": "String",
+"adresse": "String",
+"ville": "String",
+"siteWeb": "String",
+"logo": "String",
+"description": "String",
+"secteurActivite": "Array",
+"typesPostes": "Array"
+}
 
-endpoint: `entreprise`
-créer: `POST` avec un body
-get tous: `GET`
-get un seul par id: `GET /id`
-mettre à jour: `PUT /id` avec un body
-supprimer: `DELETE /id`
+- endpoint: `entreprise`
+- créer: `POST` avec un body
+- get tous: `GET`
+- get un seul par id: `GET /id`
+- mettre à jour: `PUT /id` avec un body
+- supprimer: `DELETE /id`
 
 ### Regions
 
-nom: String
+{
+"nom": "String"
+}
 
-endpoint: `region`
-créer: `POST` avec un body
-get tous: `GET`
-get un seul par id: `GET /id`
-mettre à jour: `PUT /id` avec un body
-supprimer: `DELETE /id`
+- endpoint: `region`
+- créer: `POST` avec un body
+- get tous: `GET`
+- get un seul par id: `GET /id`
+- mettre à jour: `PUT /id` avec un body
+- supprimer: `DELETE /id`
 
 ### Secteurs d'activité
 
-nom: String
+{
+"nom": "String"
+}
 
-endpoint: `activite`
-créer: `POST` avec un body
-get tous: `GET`
-get un seul par id: `GET /id`
-mettre à jour: `PUT /id` avec un body
-supprimer: `DELETE /id`
+- endpoint: `activite`
+- créer: `POST` avec un body
+- get tous: `GET`
+- get un seul par id: `GET /id`
+- mettre à jour: `PUT /id` avec un body
+- supprimer: `DELETE /id`
 
 ### Demandes de stages
 
-titre: String,
-programmeSuivi: String,
-autresFormations: Array,
-competences: Array,
-descriptionPosteRecherche: String,
-ville: String,
-dateDebut: Date,
-dateFin: Date,
-nbHeuresSemaine: Number,
-type: String,
-duree: Number,
-remunere: Boolean,
-dateParution: Date,
-autresInformations: String,
-etudiant: String
+{
+"titre": "String",
+"programmeSuivi": "String",
+"autresFormations": "Array",
+"competences": "Array",
+"descriptionPosteRecherche": "String",
+"ville": "String",
+"dateDebut": "Date",
+"dateFin": "Date",
+"nbHeuresSemaine": "Number",
+"type": "String",
+"duree": "Number",
+"remunere": "Boolean",
+"dateParution": "Date",
+"autresInformations": "String",
+"etudiant": "String"
+}
 
-endpoint: `demandes`
-créer: `POST` avec un body
-get tous: `GET`
-get un seul par id: `GET /id`
-mettre à jour: `PUT /id` avec un body
-supprimer: `DELETE /id`
+- endpoint: `demandes`
+- créer: `POST` avec un body
+- get tous: `GET`
+- get un seul par id: `GET /id`
+- mettre à jour: `PUT /id` avec un body
+- supprimer: `DELETE /id`
 
 ### Offres de stage
 
-titre: String,
-entreprise: String,
-secteurActivite: Array,
-ville: String,
-dateDebut: Date,
-dateFin: Date,
-duree: Number,
-description: String,
-nbHeuresSemaine: Number,
-competences: Array,
-remunere: Boolean,
-emploiApresStage: Boolean,
-dateParution: Date,
-informationsSupplementaires: String,
-vedette: Boolean
+{
+"titre": "String",
+"entreprise": "String",
+"secteurActivite": "Array",
+"ville": "String",
+"dateDebut": "Date",
+"dateFin": "Date",
+"duree": "Number",
+"description": "String",
+"nbHeuresSemaine": "Number",
+"competences": "Array",
+"remunere": "Boolean",
+"emploiApresStage": "Boolean",
+"dateParution": "Date",
+"informationsSupplementaires": "String",
+"vedette": "Boolean"
+}
 
-endpoint: `stage`
-créer: `POST` avec un body
-get tous: `GET`
-get un seul par id: `GET /id`
-mettre à jour: `PUT /id` avec un body
-supprimer: `DELETE /id`
+- endpoint: `stage`
+- créer: `POST` avec un body
+- get tous: `GET`
+- get un seul par id: `GET /id`
+- mettre à jour: `PUT /id` avec un body
+- supprimer: `DELETE /id`
