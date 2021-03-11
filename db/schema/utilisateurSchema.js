@@ -14,7 +14,7 @@ const utilisateurSchema = new mongoose.Schema({
 });
 
 utilisateurSchema.statics.getUtilisateurs = function() {
-    return new Promise({}, (resolve, reject) => {
+    return new Promise((resolve, reject) => {
         this.find({}, (err, docs) => {
           if(err) {
             console.error(err)
