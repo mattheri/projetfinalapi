@@ -15,7 +15,9 @@ const demandeSchema = new mongoose.Schema({
     remunere: Boolean,
     dateParution: Date,
     autresInformations: String,
-    etudiant: String
+    etudiant: String,
+    actif: Boolean,
+    verifie: Boolean
 });
 
 demandeSchema.statics.getDemandes = function() {

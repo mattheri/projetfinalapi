@@ -11,7 +11,9 @@ const utilisateurSchema = new mongoose.Schema({
     cv: String,
     message: String,
     role: String,
-    hash: String
+    hash: String,
+    actif: Boolean,
+    verifie: Boolean
 });
 
 utilisateurSchema.statics.getUtilisateurs = function() {

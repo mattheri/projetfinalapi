@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const secteurSchema = new mongoose.Schema({
     nom: String,
+    actif: Boolean,
+    verifie: Boolean
 });
 
 secteurSchema.statics.getSecteurs = function() {

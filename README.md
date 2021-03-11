@@ -45,11 +45,15 @@ Le endpoint de l'API est:
 "competences": "Array",
 "formations": "Array",
 "cv": "String",
-"message": "String"
+"message": "String",
+"role": "String",
+"actif": "Boolean",
+"verifie": "Boolean",
+"hash": "String", (optionel)
 }
 ```
 
-_Je ne fais aucune authentification. Vous êtes responsable de créer votre propre flow d'authentification. Je n'ai pas géré les fichiers attachés non plus._
+_Je n'ai pas géré les fichiers attachés._
 
 - endpoint: `utilisateur`
 - créer: `POST` avec un body
@@ -75,7 +79,10 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 "logo": "String",
 "description": "String",
 "secteurActivite": "Array",
-"typesPostes": "Array"
+"typesPostes": "Array",
+"role": "String",
+"actif": "Boolean",
+"verifie": "Boolean"
 }
 ```
 
@@ -90,7 +97,9 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 
 ```
 {
-"nom": "String"
+"nom": "String",
+"actif": "Boolean",
+"verifie": "Boolean"
 }
 ```
 
@@ -105,7 +114,9 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 
 ```
 {
-"nom": "String"
+"nom": "String",
+"actif": "Boolean",
+"verifie": "Boolean"
 }
 ```
 
@@ -134,7 +145,9 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 "remunere": "Boolean",
 "dateParution": "Date",
 "autresInformations": "String",
-"etudiant": "String"
+"etudiant": "String",
+"actif": "Boolean",
+"verifie": "Boolean"
 }
 ```
 
@@ -163,7 +176,10 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 "emploiApresStage": "Boolean",
 "dateParution": "Date",
 "informationsSupplementaires": "String",
-"vedette": "Boolean"
+"vedette": "Boolean",
+"entreprise": "String",
+"actif": "Boolean",
+"verifie": "Boolean"
 }
 ```
 

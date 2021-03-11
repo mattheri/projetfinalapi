@@ -17,6 +17,8 @@ const stageSchema = new mongoose.Schema({
     informationsSupplementaires: String,
     vedette: Boolean,
     entreprise: String,
+    actif: Boolean,
+    verifie: Boolean
 });
 
 stageSchema.statics.getStages = function() {

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const regionSchema = new mongoose.Schema({
     nom: String,
+    actif: Boolean,
+    verifie: Boolean
 });
 
 regionSchema.statics.getRegions = function() {

@@ -13,7 +13,9 @@ const entrepriseSchema = new mongoose.Schema({
     description: String,
     secteurActivite: Array,
     typesPostes: Array,
-    role: String
+    role: String,
+    actif: Boolean,
+    verifie: Boolean
 });
 
 entrepriseSchema.statics.getEntreprises = function() {
