@@ -9,7 +9,8 @@ const utilisateurSchema = new mongoose.Schema({
     competences: Array,
     formations: Array,
     cv: String,
-    message: String
+    message: String,
+    role: String,
 });
 
 utilisateurSchema.statics.getUtilisateurs = function() {
