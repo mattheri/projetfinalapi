@@ -11,6 +11,7 @@ const utilisateurSchema = new mongoose.Schema({
     cv: String,
     message: String,
     role: String,
+    hash: String
 });
 
 utilisateurSchema.statics.getUtilisateurs = function() {
@@ -65,6 +66,21 @@ utilisateurSchema.statics.findUtilisateur = function(id) {
     })
 }
 
+utilisateurSchema.statics.findUtilisateurByEmail = function(email) {
+    return new Promise((resolve, reject) => {
+        this.findOne({ courriel: email }).lean().exec(
+            (err, doc) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                }
+    
+                resolve(doc);
+            })
+        }
+        )
+}
+
 utilisateurSchema.statics.addUtilisateur = function(body) {
     return new Promise((resolve, reject) => {
         this.create(body, (err, doc) => {
@@ -73,7 +89,7 @@ utilisateurSchema.statics.addUtilisateur = function(body) {
                 reject(err);
             }
 
-            resolve(doc);
+            resolve(doc.toObject());
         })
     })
 }

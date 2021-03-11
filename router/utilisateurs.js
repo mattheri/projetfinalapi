@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt');
 const UtilisateurModel = require('../db/schema/utilisateurSchema');
 
 /**
@@ -32,6 +33,62 @@ router.post('/', async (req, res) => {
     try {
         const utilisateur = await UtilisateurModel.addUtilisateur(req.body);
         res.send(JSON.stringify(utilisateur));
+    } catch (err) {
+        res.status(404).send(err);
+    }
+})
+
+/**
+ * Créer un utilisateur avec un hash pour authentication future.
+ */
+router.post('/signup', async (req, res) => {
+    try {
+        if (req.body.password) {
+            const saltrounds = 10;
+            const password = req.body.password;
+            delete req.body.password;
+
+            bcrypt.hash(password, saltrounds, async (err, hash) => {
+                if (err) {
+                    return err;
+                }
+                const body = { ...req.body, hash };
+                const utilisateur = await UtilisateurModel.addUtilisateur(body);
+                if (delete utilisateur.hash) {
+                    res.send(JSON.stringify(utilisateur));
+                }
+            })
+        } else {
+            throw new Error('Send password to be encrypted');
+        }
+    } catch (err) {
+        res.status(404).send(err);
+    }
+})
+
+/**
+ * Authentifier l'utilisateur en question.
+ */
+router.post('/login', async (req, res) => {
+    try {
+        const utilisateur = await UtilisateurModel.findUtilisateurByEmail(req.body.courriel);
+        if (utilisateur.hash) {
+            bcrypt.compare(req.body.password, utilisateur.hash, (err, same) => {
+                if (err) {
+                    return err;
+                }
+
+                if (same) {
+                    if (delete utilisateur.hash) {
+                        res.send(JSON.stringify(utilisateur));
+                    }
+                } else {
+                    throw new Error("Le mot de passe entré n'est pas le bon.");
+                }
+            })
+        } else {
+            throw new Error('Aucun utilisateur trouvé avec ce courriel');
+        }
     } catch (err) {
         res.status(404).send(err);
     }

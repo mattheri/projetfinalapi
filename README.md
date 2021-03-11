@@ -35,6 +35,7 @@ Le endpoint de l'API est:
 
 ### Utilisateurs
 
+```
 {
 "nom": "String",
 "prenom": "String",
@@ -46,6 +47,7 @@ Le endpoint de l'API est:
 "cv": "String",
 "message": "String"
 }
+```
 
 _Je ne fais aucune authentification. Vous êtes responsable de créer votre propre flow d'authentification. Je n'ai pas géré les fichiers attachés non plus._
 
@@ -55,9 +57,12 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 - get un seul par id: `GET /id`
 - mettre à jour: `PUT /id` avec un body
 - supprimer: `DELETE /id`
+- créer avec authentification: `POST /signup` avec un body contenant une propriété `password` et `courriel`
+- authentifier un utilisateur: `POST /login` avec un body contenant une propriété `password` et `courriel`
 
 ### Entreprises
 
+```
 {
 "nom": "String",
 "nomPersonneContact": "String",
@@ -72,6 +77,7 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 "secteurActivite": "Array",
 "typesPostes": "Array"
 }
+```
 
 - endpoint: `entreprise`
 - créer: `POST` avec un body
@@ -82,9 +88,11 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 
 ### Regions
 
+```
 {
 "nom": "String"
 }
+```
 
 - endpoint: `region`
 - créer: `POST` avec un body
@@ -95,9 +103,11 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 
 ### Secteurs d'activité
 
+```
 {
 "nom": "String"
 }
+```
 
 - endpoint: `activite`
 - créer: `POST` avec un body
@@ -108,6 +118,7 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 
 ### Demandes de stages
 
+```
 {
 "titre": "String",
 "programmeSuivi": "String",
@@ -125,6 +136,7 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 "autresInformations": "String",
 "etudiant": "String"
 }
+```
 
 - endpoint: `demandes`
 - créer: `POST` avec un body
@@ -135,6 +147,7 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 
 ### Offres de stage
 
+```
 {
 "titre": "String",
 "entreprise": "String",
@@ -152,6 +165,7 @@ _Je ne fais aucune authentification. Vous êtes responsable de créer votre prop
 "informationsSupplementaires": "String",
 "vedette": "Boolean"
 }
+```
 
 - endpoint: `stage`
 - créer: `POST` avec un body
