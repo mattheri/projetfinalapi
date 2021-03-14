@@ -1,89 +1,89 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const stageSchema = new mongoose.Schema({
-    titre: String,
-    entreprise: String,
-    secteurActivite: Array,
-    ville: String,
-    dateDebut: Date,
-    dateFin: Date,
-    duree: Number,
-    description: String,
-    nbHeuresSemaine: Number,
-    competences: Array,
-    remunere: Boolean,
-    emploiApresStage: Boolean,
-    dateParution: Date,
-    informationsSupplementaires: String,
-    vedette: Boolean,
-    entreprise: String,
-    actif: Boolean,
-    verifie: Boolean
+  titre: String,
+  entreprise: String,
+  secteurActivite: Array,
+  ville: String,
+  dateDebut: Date,
+  dateFin: Date,
+  duree: Number,
+  description: String,
+  nbHeuresSemaine: Number,
+  competences: Array,
+  remunere: Boolean,
+  emploiApresStage: Boolean,
+  dateParution: Date,
+  informationsSupplementaires: String,
+  vedette: Boolean,
+  entreprise: String,
+  actif: Boolean,
+  verifie: Boolean,
 });
 
-stageSchema.statics.getStages = function() {
-    return new Promise((resolve, reject) => {
-        this.find({}, (err, docs) => {
-          if(err) {
-            console.error(err)
-            return reject(err)
-          }
-          
-          resolve(docs)
-        })
+stageSchema.statics.getStages = function () {
+  return new Promise((resolve, reject) => {
+    this.find({}, (err, docs) => {
+      if (err) {
+        console.error(err);
+        return reject(err);
+      }
+
+      resolve(docs);
     });
-}
+  });
+};
 
-stageSchema.statics.updateStage = function(id, body) {
-    return new Promise((resolve, reject) => {
-        this.findByIdAndUpdate(id, body, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+stageSchema.statics.updateStage = function (id, body) {
+  return new Promise((resolve, reject) => {
+    this.findByIdAndUpdate(id, body, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      resolve(doc);
+    });
+  });
+};
 
-stageSchema.statics.deleteStage = function(id) {
-    return new Promise((resolve, reject) => {
-        this.findByIdAndDelete(id, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+stageSchema.statics.deleteStage = function (id) {
+  return new Promise((resolve, reject) => {
+    this.findByIdAndDelete(id, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      resolve(doc);
+    });
+  });
+};
 
-stageSchema.statics.findStage = function(id) {
-    return new Promise((resolve, reject) => {
-        this.findById(id, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+stageSchema.statics.findStage = function (id) {
+  return new Promise((resolve, reject) => {
+    this.findById(id, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      resolve(doc);
+    });
+  });
+};
 
-stageSchema.statics.addStage = function(body) {
-    return new Promise((resolve, reject) => {
-        this.create(body, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+stageSchema.statics.addStage = function (body) {
+  return new Promise((resolve, reject) => {
+    this.create(body, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      resolve(doc);
+    });
+  });
+};
 
-module.exports = mongoose.model('OffreStage', stageSchema);
+module.exports = mongoose.model("OffreStage", stageSchema);

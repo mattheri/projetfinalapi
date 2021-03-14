@@ -1,99 +1,113 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const utilisateurSchema = new mongoose.Schema({
-    nom: String,
-    prenom: String,
-    courriel: String,
-    telephone: String,
-    ville: String,
-    competences: Array,
-    formations: Array,
-    cv: String,
-    message: String,
-    role: String,
-    hash: String,
-    actif: Boolean,
-    verifie: Boolean
+  nom: String,
+  prenom: String,
+  courriel: String,
+  telephone: String,
+  ville: String,
+  competences: Array,
+  formations: Array,
+  cv: String,
+  message: String,
+  role: String,
+  hash: String,
+  actif: Boolean,
+  verifie: Boolean,
 });
 
-utilisateurSchema.statics.getUtilisateurs = function() {
-    return new Promise((resolve, reject) => {
-        this.find({}, (err, docs) => {
-          if(err) {
-            console.error(err)
-            return reject(err)
+utilisateurSchema.statics.getUtilisateurs = function () {
+  return new Promise((resolve, reject) => {
+    this.find({}, (err, docs) => {
+      if (err) {
+        console.error(err);
+        return reject(err);
+      }
+
+      resolve(
+        docs.map((doc) => {
+          const d = doc.toObject();
+          if (d.hash) {
+            delete d.hash;
           }
-          
-          resolve(docs)
+
+          return d;
         })
+      );
     });
-}
+  });
+};
 
-utilisateurSchema.statics.updateUtilisateur = function(id, body) {
-    return new Promise((resolve, reject) => {
-        this.findByIdAndUpdate(id, body, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+utilisateurSchema.statics.updateUtilisateur = function (id, body) {
+  return new Promise((resolve, reject) => {
+    this.findByIdAndUpdate(id, body, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      resolve(doc);
+    });
+  });
+};
 
-utilisateurSchema.statics.deleteUtilisateur = function(id) {
-    return new Promise((resolve, reject) => {
-        this.findByIdAndDelete(id, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+utilisateurSchema.statics.deleteUtilisateur = function (id) {
+  return new Promise((resolve, reject) => {
+    this.findByIdAndDelete(id, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      resolve(doc);
+    });
+  });
+};
 
-utilisateurSchema.statics.findUtilisateur = function(id) {
-    return new Promise((resolve, reject) => {
-        this.findById(id, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+utilisateurSchema.statics.findUtilisateur = function (id) {
+  return new Promise((resolve, reject) => {
+    this.findById(id, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-            resolve(doc);
-        })
-    })
-}
+      const d = doc.toObject();
+      if (d.hash) {
+        delete d.hash;
+      }
 
-utilisateurSchema.statics.findUtilisateurByEmail = function(email) {
-    return new Promise((resolve, reject) => {
-        this.findOne({ courriel: email }).lean().exec(
-            (err, doc) => {
-                if (err) {
-                    console.log(err);
-                    reject(err);
-                }
-    
-                resolve(doc);
-            })
+      resolve(d);
+    });
+  });
+};
+
+utilisateurSchema.statics.findUtilisateurByEmail = function (email) {
+  return new Promise((resolve, reject) => {
+    this.findOne({ courriel: email })
+      .lean()
+      .exec((err, doc) => {
+        if (err) {
+          console.log(err);
+          reject(err);
         }
-        )
-}
 
-utilisateurSchema.statics.addUtilisateur = function(body) {
-    return new Promise((resolve, reject) => {
-        this.create(body, (err, doc) => {
-            if (err) {
-                console.log(err);
-                reject(err);
-            }
+        resolve(doc);
+      });
+  });
+};
 
-            resolve(doc.toObject());
-        })
-    })
-}
+utilisateurSchema.statics.addUtilisateur = function (body) {
+  return new Promise((resolve, reject) => {
+    this.create(body, (err, doc) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
 
-module.exports = mongoose.model('Utilsateur', utilisateurSchema);
+      resolve(doc.toObject());
+    });
+  });
+};
+
+module.exports = mongoose.model("Utilsateur", utilisateurSchema);
