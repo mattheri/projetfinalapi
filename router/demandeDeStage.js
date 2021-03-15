@@ -8,7 +8,7 @@ const paginateRequest = require("../paginateRequest");
 router.get("/", async (req, res) => {
   try {
     const demandes = await DemandeStageModel.getDemandes();
-    res.json(JSON.stringify(demandes));
+    res.send(JSON.stringify(demandes));
   } catch (err) {
     res.status(404).send(err);
   }
@@ -36,7 +36,7 @@ router.get("/paginated", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const demande = await DemandeStageModel.findDemande(req.params.id);
-    res.json(JSON.stringify(demande));
+    res.send(JSON.stringify(demande));
   } catch (err) {
     res.status(404).send(err);
   }
@@ -48,7 +48,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const demande = await DemandeStageModel.addDemande(req.body);
-    res.json(JSON.stringify(demande));
+    res.send(JSON.stringify(demande));
   } catch (err) {
     res.send(404, err);
   }
@@ -63,7 +63,7 @@ router.put("/:id", async (req, res) => {
       req.params.id,
       req.body
     );
-    res.json(JSON.stringify(demande));
+    res.send(JSON.stringify(demande));
   } catch (err) {
     res.status(404).send(err);
   }
@@ -75,7 +75,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const demande = await DemandeStageModel.deleteDemande(req.params.id);
-    res.json(JSON.stringify(demande));
+    res.send(JSON.stringify(demande));
   } catch (err) {
     res.status(404).send(err);
   }

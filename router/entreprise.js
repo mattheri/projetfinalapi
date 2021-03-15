@@ -8,7 +8,7 @@ const paginateRequest = require("../paginateRequest");
 router.get("/", async (req, res) => {
   try {
     const entreprises = await EntrepriseModel.getEntreprises();
-    res.json(JSON.stringify(entreprises));
+    res.send(JSON.stringify(entreprises));
   } catch (err) {
     res.send(err);
   }
@@ -35,7 +35,7 @@ router.get("/paginated", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const entreprise = await EntrepriseModel.findEntreprise(req.params.id);
-    res.json(JSON.stringify(entreprise));
+    res.send(JSON.stringify(entreprise));
   } catch (err) {
     res.send(err);
   }
@@ -47,7 +47,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const entreprise = await EntrepriseModel.addEntreprise(req.body);
-    res.json(JSON.stringify(entreprise));
+    res.send(JSON.stringify(entreprise));
   } catch (err) {
     res.send(err);
   }
@@ -62,7 +62,7 @@ router.put("/:id", async (req, res) => {
       req.params.id,
       req.body
     );
-    res.json(JSON.stringify(entreprise));
+    res.send(JSON.stringify(entreprise));
   } catch (err) {
     res.send(err);
   }
@@ -74,7 +74,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const entreprise = await EntrepriseModel.deleteEntreprise(req.params.id);
-    res.json(JSON.stringify(entreprise));
+    res.send(JSON.stringify(entreprise));
   } catch (err) {
     res.send(err);
   }

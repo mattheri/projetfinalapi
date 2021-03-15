@@ -8,7 +8,7 @@ const paginateRequest = require("../paginateRequest");
 router.get("/", async (req, res) => {
   try {
     const etudiants = await EtudiantModel.getEtudiants();
-    res.json(JSON.stringify(etudiants));
+    res.send(JSON.stringify(etudiants));
   } catch (err) {
     res.send(err);
   }
@@ -35,7 +35,7 @@ router.get("/paginated", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const etudiant = await EtudiantModel.findEtudiant(req.params.id);
-    res.json(JSON.stringify(etudiant));
+    res.send(JSON.stringify(etudiant));
   } catch (err) {
     res.send(err);
   }
@@ -47,7 +47,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const etudiant = await EtudiantModel.addEtudiant(req.body);
-    res.json(JSON.stringify(etudiant));
+    res.send(JSON.stringify(etudiant));
   } catch (err) {
     res.send(err);
   }
@@ -62,7 +62,7 @@ router.put("/:id", async (req, res) => {
       req.params.id,
       req.body
     );
-    res.json(JSON.stringify(etudiant));
+    res.send(JSON.stringify(etudiant));
   } catch (err) {
     res.send(err);
   }
@@ -74,7 +74,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const etudiant = await EtudiantModel.deleteEtudiant(req.params.id);
-    res.json(JSON.stringify(etudiant));
+    res.send(JSON.stringify(etudiant));
   } catch (err) {
     res.send(err);
   }
