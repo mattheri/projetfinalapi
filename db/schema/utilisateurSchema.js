@@ -1,19 +1,13 @@
 const mongoose = require("mongoose");
 
 const utilisateurSchema = new mongoose.Schema({
-  nom: String,
-  prenom: String,
-  courriel: String,
-  telephone: String,
-  ville: String,
-  competences: Array,
-  formations: Array,
-  cv: String,
-  message: String,
   role: String,
   hash: String,
   actif: Boolean,
   verifie: Boolean,
+  premiereConnexion: Boolean,
+  entiteId: String,
+  type: String,
 });
 
 utilisateurSchema.statics.getUtilisateurs = function () {
@@ -21,7 +15,7 @@ utilisateurSchema.statics.getUtilisateurs = function () {
     this.find({}, (err, docs) => {
       if (err) {
         console.error(err);
-        return reject(err);
+        reject(err);
       }
 
       resolve(

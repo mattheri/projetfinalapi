@@ -23,7 +23,7 @@ entrepriseSchema.statics.getEntreprises = function () {
     this.find({}, (err, docs) => {
       if (err) {
         console.error(err);
-        return reject(err);
+        reject(err);
       }
 
       resolve(docs);

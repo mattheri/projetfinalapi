@@ -1,27 +1,17 @@
 const mongoose = require("mongoose");
 
-const stageSchema = new mongoose.Schema({
-  titre: String,
-  entreprise: String,
-  secteurActivite: Array,
+const etudiantSchema = new mongoose.Schema({
+  nom: String,
+  prenom: String,
+  telephone: String,
   ville: String,
-  dateDebut: Date,
-  dateFin: Date,
-  duree: Number,
-  description: String,
-  nbHeuresSemaine: Number,
   competences: Array,
-  remunere: Boolean,
-  emploiApresStage: Boolean,
-  dateParution: Date,
-  informationsSupplementaires: String,
-  vedette: Boolean,
-  entreprise: String,
-  actif: Boolean,
+  formations: Array,
+  cv: String,
   verifie: Boolean,
 });
 
-stageSchema.statics.getStages = function () {
+etudiantSchema.statics.getEtudiants = function () {
   return new Promise((resolve, reject) => {
     this.find({}, (err, docs) => {
       if (err) {
@@ -34,7 +24,7 @@ stageSchema.statics.getStages = function () {
   });
 };
 
-stageSchema.statics.updateStage = function (id, body) {
+etudiantSchema.statics.updateEtudiants = function (id, body) {
   return new Promise((resolve, reject) => {
     this.findByIdAndUpdate(id, body, (err, doc) => {
       if (err) {
@@ -47,7 +37,7 @@ stageSchema.statics.updateStage = function (id, body) {
   });
 };
 
-stageSchema.statics.deleteStage = function (id) {
+etudiantSchema.statics.deleteEtudiant = function (id) {
   return new Promise((resolve, reject) => {
     this.findByIdAndDelete(id, (err, doc) => {
       if (err) {
@@ -60,7 +50,7 @@ stageSchema.statics.deleteStage = function (id) {
   });
 };
 
-stageSchema.statics.findStage = function (id) {
+etudiantSchema.statics.findEtudiant = function (id) {
   return new Promise((resolve, reject) => {
     this.findById(id, (err, doc) => {
       if (err) {
@@ -73,7 +63,7 @@ stageSchema.statics.findStage = function (id) {
   });
 };
 
-stageSchema.statics.addStage = function (body) {
+etudiantSchema.statics.addEtudiant = function (body) {
   return new Promise((resolve, reject) => {
     this.create(body, (err, doc) => {
       if (err) {
@@ -81,9 +71,9 @@ stageSchema.statics.addStage = function (body) {
         reject(err);
       }
 
-      resolve(doc);
+      resolve(doc.toObject());
     });
   });
 };
 
-module.exports = mongoose.model("OffreStage", stageSchema);
+module.exports = mongoose.model("Etudiant", etudiantSchema);
