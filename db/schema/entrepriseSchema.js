@@ -4,7 +4,6 @@ const entrepriseSchema = new mongoose.Schema({
   nom: String,
   nomPersonneContact: String,
   prenomPersonneContact: String,
-  courriel: String,
   telephone: String,
   adresse: String,
   ville: String,

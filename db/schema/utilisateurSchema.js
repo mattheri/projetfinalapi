@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const utilisateurSchema = new mongoose.Schema({
   role: String,
+  courriel: String,
   hash: String,
   actif: Boolean,
   verifie: Boolean,
