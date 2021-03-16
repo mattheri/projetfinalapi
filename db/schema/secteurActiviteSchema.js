@@ -4,6 +4,7 @@ const secteurSchema = new mongoose.Schema({
   nom: String,
   actif: Boolean,
   verifie: Boolean,
+  slug: String,
 });
 
 secteurSchema.statics.getSecteurs = function () {

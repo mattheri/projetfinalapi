@@ -4,6 +4,7 @@ const regionSchema = new mongoose.Schema({
   nom: String,
   actif: Boolean,
   verifie: Boolean,
+  slug: String,
 });
 
 regionSchema.statics.getRegions = function () {

@@ -89,7 +89,6 @@ _Je n'ai pas géré les fichiers attachés._
     nom: string,
     nomPersonneContact: string,
     prenomPersonneContact: string,
-    courriel: string,
     telephone: string,
     adresse: string,
     ville: string,
@@ -118,7 +117,8 @@ _Je n'ai pas géré les fichiers attachés._
 {
     nom: string,
     actif: boolean,
-    verifie: boolean
+    verifie: boolean,
+    slug: string
 }
 ```
 
@@ -135,7 +135,8 @@ _Je n'ai pas géré les fichiers attachés._
 {
     nom: string,
     actif: boolean,
-    verifie: boolean
+    verifie: boolean,
+    slug: string
 }
 ```
 
