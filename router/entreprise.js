@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 router.get("/paginated", async (req, res) => {
   try {
     const response = await paginateRequest(
-      EntrepriseModel.getEntreprises,
+      await EntrepriseModel.getEntreprises(),
       req.query
     );
     res.send(response);

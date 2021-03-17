@@ -5,7 +5,6 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3001;
 require("./db/database");
-
 app.use(cors());
 app.use(helmet());
 app.use(express.json());

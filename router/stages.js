@@ -19,7 +19,10 @@ router.get("/", async (req, res) => {
  */
 router.get("/paginated", async (req, res) => {
   try {
-    const response = await paginateRequest(StageModel.getStages, req.query);
+    const response = await paginateRequest(
+      await StageModel.getStages(),
+      req.query
+    );
     res.send(response);
   } catch (err) {
     res.status(404).send(err);

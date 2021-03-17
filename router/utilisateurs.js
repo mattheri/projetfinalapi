@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 router.get("/paginated", async (req, res) => {
   try {
     const response = await paginateRequest(
-      UtilisateurModel.getUtilisateurs,
+      await UtilisateurModel.getUtilisateurs(),
       req.query
     );
     res.send(response);
