@@ -84,4 +84,4 @@ formationSchema.statics.addFormation = function (body) {
   });
 };
 
-module.exports = mongoose.model("Fomration", formationSchema);
+module.exports = mongoose.model("Formation", formationSchema);
