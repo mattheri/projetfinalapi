@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
-const secteurSchema = new mongoose.Schema({
+const formationSchema = new mongoose.Schema({
   nom: String,
   actif: Boolean,
   verifie: Boolean,
   slug: String,
 });
 
-secteurSchema.pre("save", function (next) {
+formationSchema.pre("save", function (next) {
   const slug = slugify(this.nom, {
     locale: "fr",
     lower: true,
@@ -18,7 +19,7 @@ secteurSchema.pre("save", function (next) {
   next();
 });
 
-secteurSchema.statics.getSecteurs = function () {
+formationSchema.statics.getFormations = function () {
   return new Promise((resolve, reject) => {
     this.find({}, (err, docs) => {
       if (err) {
@@ -31,7 +32,7 @@ secteurSchema.statics.getSecteurs = function () {
   });
 };
 
-secteurSchema.statics.updateSecteur = function (id, body) {
+formationSchema.statics.updateFormation = function (id, body) {
   return new Promise((resolve, reject) => {
     this.findByIdAndUpdate(id, body, (err, doc) => {
       if (err) {
@@ -44,7 +45,7 @@ secteurSchema.statics.updateSecteur = function (id, body) {
   });
 };
 
-secteurSchema.statics.deleteSecteur = function (id) {
+formationSchema.statics.deleteFormation = function (id) {
   return new Promise((resolve, reject) => {
     this.findByIdAndDelete(id, (err, doc) => {
       if (err) {
@@ -57,7 +58,7 @@ secteurSchema.statics.deleteSecteur = function (id) {
   });
 };
 
-secteurSchema.statics.findSecteur = function (id) {
+formationSchema.statics.findFormation = function (id) {
   return new Promise((resolve, reject) => {
     this.findById(id, (err, doc) => {
       if (err) {
@@ -70,7 +71,7 @@ secteurSchema.statics.findSecteur = function (id) {
   });
 };
 
-secteurSchema.statics.addSecteur = function (body) {
+formationSchema.statics.addFormation = function (body) {
   return new Promise((resolve, reject) => {
     this.create(body, (err, doc) => {
       if (err) {
@@ -83,4 +84,4 @@ secteurSchema.statics.addSecteur = function (body) {
   });
 };
 
-module.exports = mongoose.model("Secteur", secteurSchema);
+module.exports = mongoose.model("Fomration", formationSchema);
