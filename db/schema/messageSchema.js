@@ -9,6 +9,16 @@ const messageSchema = new mongoose.Schema({
   readInput: Boolean,
 });
 
+messageSchema.pre("save", function (next) {
+  const now = new Date(Date.now());
+
+  if (!this.date) {
+    this.date = now;
+  }
+
+  next();
+});
+
 messageSchema.statics.updateMessage = function (id, body) {
   return new Promise((resolve, reject) => {
     this.findByIdAndUpdate(id, body, (err, doc) => {
