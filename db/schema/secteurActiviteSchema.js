@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const secteurSchema = new mongoose.Schema({
   nom: String,

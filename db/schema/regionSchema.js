@@ -1,10 +1,22 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const regionSchema = new mongoose.Schema({
   nom: String,
   actif: Boolean,
   verifie: Boolean,
   slug: String,
+});
+
+regionSchema.pre("save", function (next) {
+  const slug = slugify(this.nom, {
+    locale: "fr",
+    lower: true,
+  });
+
+  this.slug = slug;
+
+  next();
 });
 
 regionSchema.statics.getRegions = function () {
