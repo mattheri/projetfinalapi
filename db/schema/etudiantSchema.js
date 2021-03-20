@@ -5,6 +5,7 @@ const etudiantSchema = new mongoose.Schema({
   prenom: String,
   telephone: String,
   ville: String,
+  codePostal: String,
   competences: Array,
   formations: Array,
   cv: String,
