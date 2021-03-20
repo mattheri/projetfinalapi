@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
-  input: String,
-  output: String,
+  from: String,
+  to: String,
   message: String,
   date: Date,
   active: Boolean,
-  readInput: Boolean,
+  read: Boolean,
 });
 
 messageSchema.pre("save", function (next) {
@@ -34,7 +34,7 @@ messageSchema.statics.updateMessage = function (id, body) {
 
 messageSchema.statics.findMessages = function (id) {
   return new Promise((resolve, reject) => {
-    this.find({ $or: [{ input: id }, { output: id }] }, (err, doc) => {
+    this.find({ $or: [{ from: id }, { to: id }] }, (err, doc) => {
       if (err) {
         console.log(err);
         reject(err);
@@ -45,16 +45,13 @@ messageSchema.statics.findMessages = function (id) {
   });
 };
 
-messageSchema.statics.findSpecificPersonMessages = function ({
-  input,
-  output,
-}) {
+messageSchema.statics.findSpecificPersonMessages = function ({ from, to }) {
   return new Promise((resolve, reject) => {
     this.find(
       {
         $or: [
-          { input: input, output: output },
-          { input: output, output: input },
+          { from: from, to: to },
+          { to: to, from: from },
         ],
       },
       null,

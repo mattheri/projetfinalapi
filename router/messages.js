@@ -6,8 +6,8 @@ const MessageModel = require("../db/schema/messageSchema");
  */
 router.get("/:id", async (req, res) => {
   try {
-    const region = await MessageModel.findMessages(req.params.id);
-    res.send(JSON.stringify(region));
+    const messages = await MessageModel.findMessages(req.params.id);
+    res.send(JSON.stringify(messages));
   } catch (err) {
     res.status(404).send(err);
   }
@@ -31,19 +31,19 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const message = await MessageModel.addMessage(req.body);
-    console.log(message);
+    res.send(JSON.stringify(message));
   } catch (err) {
     res.status(404).send(err);
   }
 });
 
 /**
- * Modifier une région
+ * Modifier un message
  */
 router.put("/:id", async (req, res) => {
   try {
-    const region = await MessageModel.updateRegion(req.params.id, req.body);
-    res.send(JSON.stringify(region));
+    const message = await MessageModel.updateMessage(req.params.id, req.body);
+    res.send(JSON.stringify(message));
   } catch (err) {
     res.status(404).send(err);
   }

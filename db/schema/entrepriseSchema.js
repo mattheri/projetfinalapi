@@ -13,7 +13,6 @@ const entrepriseSchema = new mongoose.Schema({
   logo: String,
   description: String,
   secteurActivite: Array,
-  role: String,
   actif: Boolean,
   verifie: Boolean,
 });
