@@ -14,12 +14,24 @@ router.get("/:id", async (req, res) => {
 });
 
 /**
+ * Chercher tous les messages d'un utilisateur avec un autre utilisateur precis
+ */
+router.get("/", async (req, res) => {
+  try {
+    const message = await MessageModel.findSpecificPersonMessages(req.query);
+    res.send(JSON.stringify(message));
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
+
+/**
  * Ajouter un message
  */
 router.post("/", async (req, res) => {
   try {
-    const region = await MessageModel.addRegion(req.body);
-    res.send(JSON.stringify(region));
+    const message = await MessageModel.addMessage(req.body);
+    console.log(message);
   } catch (err) {
     res.status(404).send(err);
   }
