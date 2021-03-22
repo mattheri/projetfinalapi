@@ -100,11 +100,11 @@ router.post("/login", async (req, res) => {
             res.send(JSON.stringify(utilisateur));
           }
         } else {
-          throw new Error("Le mot de passe entré n'est pas le bon.");
+          res.send("Le mot de passe entré n'est pas le bon.");
         }
       });
     } else {
-      throw new Error("Aucun utilisateur trouvé avec ce courriel");
+      res.send("Aucun utilisateur trouvé avec ce courriel");
     }
   } catch (err) {
     res.status(404).send(err);

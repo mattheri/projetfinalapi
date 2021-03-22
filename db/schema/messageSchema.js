@@ -34,14 +34,19 @@ messageSchema.statics.updateMessage = function (id, body) {
 
 messageSchema.statics.findMessages = function (id) {
   return new Promise((resolve, reject) => {
-    this.find({ $or: [{ from: id }, { to: id }] }, (err, doc) => {
-      if (err) {
-        console.log(err);
-        reject(err);
-      }
+    this.find(
+      { $or: [{ from: id }, { to: id }] },
+      null,
+      { sort: { date: -1 } },
+      (err, doc) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+        }
 
-      resolve(doc);
-    });
+        resolve(doc);
+      }
+    );
   });
 };
 

@@ -20,6 +20,10 @@
 
 [Deploying Node.js Apps on Heroku](https://devcenter.heroku.com/articles/deploying-nodejs)
 
+### Exemple fichier .env
+
+![exemple fichier](code1.png)
+
 ## Modifications
 
 - Vous pouvez modifier les endpoints dans le fichier `server.js`.

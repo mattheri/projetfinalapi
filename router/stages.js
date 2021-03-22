@@ -30,6 +30,18 @@ router.get("/paginated", async (req, res) => {
 });
 
 /**
+ * Chercher un stage par entreprise
+ */
+router.get("/entreprise/:id", async (req, res) => {
+  try {
+    const stages = await StageModel.getStagesByEnterprise(req.params.id);
+    res.send(JSON.stringify(stages));
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
+
+/**
  * Chercher un stage précis
  */
 router.get("/:id", async (req, res) => {

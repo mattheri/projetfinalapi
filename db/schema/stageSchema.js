@@ -16,14 +16,27 @@ const stageSchema = new mongoose.Schema({
   dateParution: Date,
   informationsSupplementaires: String,
   vedette: Boolean,
-  entreprise: String,
   actif: Boolean,
   verifie: Boolean,
+  entityId: String,
 });
 
 stageSchema.statics.getStages = function () {
   return new Promise((resolve, reject) => {
     this.find({}, (err, docs) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      }
+
+      resolve(docs);
+    });
+  });
+};
+
+stageSchema.statics.getStagesByEnterprise = function (enterpriseId) {
+  return new Promise((resolve, reject) => {
+    this.find({ entityId: enterpriseId }, (err, docs) => {
       if (err) {
         console.error(err);
         reject(err);
