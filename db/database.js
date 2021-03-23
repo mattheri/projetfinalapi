@@ -11,6 +11,7 @@ class Database {
       await mongoose.connect(`${server}/${database}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false,
       });
       console.log("connected to database");
     } catch (e) {

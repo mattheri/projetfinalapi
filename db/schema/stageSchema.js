@@ -7,9 +7,8 @@ const stageSchema = new mongoose.Schema({
   ville: String,
   dateDebut: Date,
   dateFin: Date,
-  duree: Number,
   description: String,
-  nbHeuresSemaine: Number,
+  nbHeuresSemaine: String,
   competences: Array,
   remunere: Boolean,
   emploiApresStage: Boolean,
@@ -19,6 +18,8 @@ const stageSchema = new mongoose.Schema({
   actif: Boolean,
   verifie: Boolean,
   entityId: String,
+  duree: String,
+  salaire: String,
 });
 
 stageSchema.statics.getStages = function () {

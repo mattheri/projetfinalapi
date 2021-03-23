@@ -74,7 +74,7 @@ router.post("/signup", async (req, res) => {
         }
       });
     } else {
-      throw new Error("Send password to be encrypted");
+      req.status(404).send("Send password to be encrypted");
     }
   } catch (err) {
     res.status(404).send(err);
@@ -100,11 +100,11 @@ router.post("/login", async (req, res) => {
             res.send(JSON.stringify(utilisateur));
           }
         } else {
-          res.send("Le mot de passe entré n'est pas le bon.");
+          res.status(404).send("Le mot de passe entré n'est pas le bon.");
         }
       });
     } else {
-      res.send("Aucun utilisateur trouvé avec ce courriel");
+      res.status(404).send("Aucun utilisateur trouvé avec ce courriel");
     }
   } catch (err) {
     res.status(404).send(err);

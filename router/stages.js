@@ -70,6 +70,7 @@ router.post("/", async (req, res) => {
  */
 router.put("/:id", async (req, res) => {
   try {
+    console.log(req.body);
     const stage = await StageModel.updateStage(req.params.id, req.body);
     res.send(JSON.stringify(stage));
   } catch (err) {
