@@ -20,6 +20,7 @@ const stageSchema = new mongoose.Schema({
   entityId: String,
   duree: String,
   salaire: String,
+  formationRequise: Array,
 });
 
 stageSchema.statics.getStages = function () {
