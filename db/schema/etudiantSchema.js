@@ -27,12 +27,11 @@ etudiantSchema.statics.getEtudiants = function () {
 
 etudiantSchema.statics.updateEtudiants = function (id, body) {
   return new Promise((resolve, reject) => {
-    this.findByIdAndUpdate(id, body, (err, doc) => {
+    this.findByIdAndUpdate(id, body, { new: true }, (err, doc) => {
       if (err) {
         console.log(err);
         reject(err);
       }
-
       resolve(doc);
     });
   });

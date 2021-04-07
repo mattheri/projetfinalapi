@@ -58,7 +58,7 @@ router.post("/", async (req, res) => {
  */
 router.put("/:id", async (req, res) => {
   try {
-    const etudiant = await EtudiantModel.updateEtudiant(
+    const etudiant = await EtudiantModel.updateEtudiants(
       req.params.id,
       req.body
     );

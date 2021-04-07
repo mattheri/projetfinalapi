@@ -56,7 +56,7 @@ messageSchema.statics.findSpecificPersonMessages = function ({ from, to }) {
       {
         $or: [
           { from: from, to: to },
-          { to: to, from: from },
+          { to: from, from: to },
         ],
       },
       null,
