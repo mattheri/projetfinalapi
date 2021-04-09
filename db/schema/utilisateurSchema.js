@@ -35,13 +35,18 @@ utilisateurSchema.statics.getUtilisateurs = function () {
 
 utilisateurSchema.statics.updateUtilisateur = function (id, body) {
   return new Promise((resolve, reject) => {
-    this.findByIdAndUpdate(id, body, (err, doc) => {
+    this.findByIdAndUpdate(id, body, { new: true }, (err, doc) => {
       if (err) {
         console.log(err);
         reject(err);
       }
 
-      resolve(doc);
+      const d = doc.toObject();
+      if (d.hash) {
+        delete d.hash;
+      }
+
+      resolve(d);
     });
   });
 };
@@ -54,7 +59,12 @@ utilisateurSchema.statics.deleteUtilisateur = function (id) {
         reject(err);
       }
 
-      resolve(doc);
+      const d = doc.toObject();
+      if (d.hash) {
+        delete d.hash;
+      }
+
+      resolve(d);
     });
   });
 };
@@ -87,7 +97,12 @@ utilisateurSchema.statics.findUtilisateurByEmail = function (email) {
           reject(err);
         }
 
-        resolve(doc);
+        const d = doc.toObject();
+        if (d.hash) {
+          delete d.hash;
+        }
+
+        resolve(d);
       });
   });
 };
