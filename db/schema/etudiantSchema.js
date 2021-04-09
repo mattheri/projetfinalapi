@@ -10,6 +10,10 @@ const etudiantSchema = new mongoose.Schema({
   formations: Array,
   cv: String,
   verifie: Boolean,
+  about: String,
+  startDate: Date,
+  duree: Number,
+  degreeEndDate: Date,
 });
 
 etudiantSchema.statics.getEtudiants = function () {
