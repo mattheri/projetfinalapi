@@ -41,12 +41,7 @@ utilisateurSchema.statics.updateUtilisateur = function (id, body) {
         reject(err);
       }
 
-      const d = doc.toObject();
-      if (d.hash) {
-        delete d.hash;
-      }
-
-      resolve(d);
+      resolve(doc);
     });
   });
 };
@@ -59,12 +54,7 @@ utilisateurSchema.statics.deleteUtilisateur = function (id) {
         reject(err);
       }
 
-      const d = doc.toObject();
-      if (d.hash) {
-        delete d.hash;
-      }
-
-      resolve(d);
+      resolve(doc);
     });
   });
 };
@@ -77,12 +67,7 @@ utilisateurSchema.statics.findUtilisateur = function (id) {
         reject(err);
       }
 
-      const d = doc.toObject();
-      if (d.hash) {
-        delete d.hash;
-      }
-
-      resolve(d);
+      resolve(doc);
     });
   });
 };
@@ -97,12 +82,7 @@ utilisateurSchema.statics.findUtilisateurByEmail = function (email) {
           reject(err);
         }
 
-        const d = doc.toObject();
-        if (d.hash) {
-          delete d.hash;
-        }
-
-        resolve(d);
+        resolve(doc);
       });
   });
 };
